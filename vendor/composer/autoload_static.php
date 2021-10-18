@@ -4,11 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1ce8e39467b28a745351043e28c93faa
+class ComposerStaticInitbf94da7b3f80f0c1ee21e8aaf468fe07
 {
     public static $classMap = array (
         'ilLp2LrsChangesQueue' => __DIR__ . '/../..' . '/classes/class.ilLp2LrsChangesQueue.php',
         'ilLp2LrsChangesQueueEntry' => __DIR__ . '/../..' . '/classes/class.ilLp2LrsChangesQueueEntry.php',
+        'ilLp2LrsConfigGUI' => __DIR__ . '/../..' . '/classes/class.ilLp2LrsConfigGUI.php',
         'ilLp2LrsCron' => __DIR__ . '/../..' . '/classes/class.ilLp2LrsCron.php',
         'ilLp2LrsPlugin' => __DIR__ . '/../..' . '/classes/class.ilLp2LrsPlugin.php',
         'ilLp2LrsXapiRequest' => __DIR__ . '/../..' . '/classes/class.ilLp2LrsXapiRequest.php',
@@ -20,7 +21,7 @@ class ComposerStaticInit1ce8e39467b28a745351043e28c93faa
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit1ce8e39467b28a745351043e28c93faa::$classMap;
+            $loader->classMap = ComposerStaticInitbf94da7b3f80f0c1ee21e8aaf468fe07::$classMap;
 
         }, null, ClassLoader::class);
     }

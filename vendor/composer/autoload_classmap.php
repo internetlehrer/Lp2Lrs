@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'ilLp2LrsChangesQueue' => $baseDir . '/classes/class.ilLp2LrsChangesQueue.php',
     'ilLp2LrsChangesQueueEntry' => $baseDir . '/classes/class.ilLp2LrsChangesQueueEntry.php',
+    'ilLp2LrsConfigGUI' => $baseDir . '/classes/class.ilLp2LrsConfigGUI.php',
     'ilLp2LrsCron' => $baseDir . '/classes/class.ilLp2LrsCron.php',
     'ilLp2LrsPlugin' => $baseDir . '/classes/class.ilLp2LrsPlugin.php',
     'ilLp2LrsXapiRequest' => $baseDir . '/classes/class.ilLp2LrsXapiRequest.php',
