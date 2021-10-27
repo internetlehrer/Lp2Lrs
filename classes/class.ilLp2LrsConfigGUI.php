@@ -25,7 +25,12 @@ class ilLp2LrsConfigGUI extends ilPluginConfigGUI
 	protected function configure(ilPropertyFormGUI $form = null)
 	{
 		global $DIC; /* @var \ILIAS\DI\Container $DIC */
-		
+
+        if( !count(ilCmiXapiLrsTypeList::getTypesData(false)) ) {
+            ilUtil::sendFailure($DIC->language()->txt('rep_robj_xxcf_type_not_set'));
+            return;
+        }
+
 		if( $form === null )
 		{
 			$form = $this->buildForm();
@@ -64,7 +69,8 @@ class ilLp2LrsConfigGUI extends ilPluginConfigGUI
 		$item = new ilRadioGroupInputGUI('LRS-Type', 'lrs_type_id');
 		$item->setRequired(true);
 		
-		$types = ilPluginAdmin::isPluginActive("xxcf") ? ilLp2LrsChangesQueue::getTypesData() : ilCmiXapiLrsTypeList::getTypesData(false);
+		#$types = ilPluginAdmin::isPluginActive("xxcf") ? ilLp2LrsChangesQueue::getTypesData() : ilCmiXapiLrsTypeList::getTypesData(false);
+        $types = ilCmiXapiLrsTypeList::getTypesData(false);
 		
 		foreach ($types as $type)
 		{

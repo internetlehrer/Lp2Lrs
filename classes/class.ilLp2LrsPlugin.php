@@ -117,8 +117,10 @@ class ilLp2LrsPlugin extends ilCronHookPlugin {
 
                     $tree = array_reverse($DIC->repositoryTree()->getPathFull($parameters['ref_id']));
                     $keys = array_keys($tree);
+                    $isEnabledAndNotAllowedLp2LrsPrivacy = false;
 
                     if( ilPluginAdmin::isPluginActive("xlpp") ) {
+                        $isEnabledAndNotAllowedLp2LrsPrivacy = true;
                         $checkPrivacyForRefId = 0;
                         foreach( $tree as $key => $node ) {
                             if ($node['type'] === 'crs') {
@@ -131,9 +133,13 @@ class ilLp2LrsPlugin extends ilCronHookPlugin {
 
                         /** @var ilLp2LrsPrivacyPlugin $checkPrivacyPluginObj */
                         $checkPrivacyPluginObj = ilPluginAdmin::getPluginObject(IL_COMP_SERVICE, 'UIComponent', 'uihk', 'Lp2LrsPrivacy');
-                        if( (bool)$checkPrivacyForRefId && !$checkPrivacyPluginObj->getConfig()->getCheck('lp2lrscy_' . $checkPrivacyForRefId . '_' . $parameters['usr_id'] ) ) {
-                            break; // switch default
+                        if( (bool)$checkPrivacyForRefId && $checkPrivacyPluginObj->getConfig()->getCheck('lp2lrscy_' . $checkPrivacyForRefId . '_' . $parameters['usr_id'] ) ) {
+                            $isEnabledAndNotAllowedLp2LrsPrivacy = false;
                         }
+                    }
+
+                    if( $isEnabledAndNotAllowedLp2LrsPrivacy ) {
+                        break;
                     }
 
                     $parameters['component'] = $component;
