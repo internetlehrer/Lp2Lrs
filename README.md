@@ -32,7 +32,7 @@ The plugin must be integrated into the following subdirectory of the ILIAS docum
 ```
 mkdir -p /[ILIAS_DOC_ROOT]/Customizing/global/plugins/Services/Cron/CronHook
 cd /[ILIAS_DOC_ROOT]/Customizing/global/plugins/Services/Cron/CronHook
-git clone https://gitlab.com/ukohnle/lp2lrs Lp2Lrs
+git clone https://github.com/internetlehrer/Lp2Lrs
 ```
 
 With your web browser open ILIAS and login as system administrator. 
